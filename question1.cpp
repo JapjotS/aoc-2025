@@ -23,24 +23,32 @@ int main(){
             //cout << matches[2]; //value
             char Right = 'R';
             char Left = 'L';
+
+
+            char dir = matches[1].str()[0];
+            int dist = stoi(matches[2].str());
+            dist %= 100; //cause the other thing isnt fricking working this is a piece of shit
+
             //cout << matches[2] << endl;
-            if (matches[1].str()[0] == 'L'){
+            if (dir == 'L'){
                 //cout << start << endl;
-                start = start - stoi(matches[2]);
-                if (start < 0){
-                    start = (start - stoi(matches[2]) % 100 + 100) % 100;
-                }
+                //start = start - stoi(matches[2]);
+                //if (start < 0)
+                    start = (start - dist + 100) % 100;
+                //}
+            } else {
+                start = (start+dist)%100;
             }
 
-            if (matches[1] == 'R'){
-                    start = start+stoi(matches[2]);
-                    if (start>=100){
-                        start = start % 100;
-                    }
-            }
+            //if (matches[1] == 'R'){
+                  //  start = start+stoi(matches[2]);
+                 //   if (start>=100){
+               //         start = start % 100;
+             //       }
+           // }
 
             if (start == 0){
-                zero_times = zero_times + 1;
+                zero_times++;
             }
 
 
